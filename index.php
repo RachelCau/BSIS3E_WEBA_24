@@ -7,5 +7,6 @@
 </head>
 <body>
     <h1>Hellow People</h1>
+    <h2>this is my new headings</h2>
 </body>
 </html>

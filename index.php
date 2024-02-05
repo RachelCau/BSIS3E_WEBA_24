@@ -6,9 +6,8 @@
     <title>BSIS 3E -Github</title>
 </head>
 <body>
-    <h1>Hellow People</h1>
-    <h2>this is my new headings</h2>
-    <h2>Im julianna</h2>
-    <h3>MEOW!</h3>
+    <div class="container">
+        <h1>This is Display Page</h1>
+    </div>
 </body>
 </html>

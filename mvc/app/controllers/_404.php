@@ -4,6 +4,7 @@ class _404
 {
     public function index()
     {
-        echo "Controller Not Found!";
+        echo 'Controller Not Found!';
+        echo 'meow';
     }
 }

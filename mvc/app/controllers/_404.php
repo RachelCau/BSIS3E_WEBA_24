@@ -6,5 +6,5 @@ class _404
         echo 'Controller not found!';
      }
 
-     
+
 }

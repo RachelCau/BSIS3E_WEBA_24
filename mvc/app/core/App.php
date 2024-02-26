@@ -14,15 +14,21 @@ class App
     public function __construct()
     {
         $url = $this->splitURL();
-        
+        // show($url);
+
+        //check if the value input is existing 
         if(isset($url[0])) {
+            //ucfirst is to set first letter to capital
             if(file_exists('../app/controllers/' . ucfirst($url[0]) . '.php')) {
 
                 $this->controller = ucfirst($url[0]);
                 unset($url[0]);
+            }else {
+                // set if the inputted value is not existing 
+                $this->controller = '_404';
             }
         }
-
+            //default value is Home.php
         require '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
         

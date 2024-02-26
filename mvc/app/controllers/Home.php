@@ -1,15 +1,11 @@
 <?php
-
-class Home
+//Extends is for inheritance so you can use the view method
+class Home extends Controller
 {
     public function index()
     {
-        echo 'Home/index';
-    }
-
-    public function test()
-    {
-        echo 'OK!';
+        
+        $this->view('home');
     }
 }
 

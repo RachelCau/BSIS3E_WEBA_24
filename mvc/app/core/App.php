@@ -16,6 +16,8 @@ class App
             {
                 $this->controller = ucfirst($url[0]);
                 unset($url[0]);
+            } else {
+                $this->controller = '_404';
             }
         }
 

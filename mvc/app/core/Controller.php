@@ -11,6 +11,5 @@ class controller {
 
             require'../app/views/404.php';
         }
-
     }
 }

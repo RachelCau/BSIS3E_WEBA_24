@@ -20,10 +20,11 @@ class App
                 $this->controller = ucfirst($url[0]);
                 unset($url[0]);
             }
-            // else
-            // {
-            //     require '../app/controllers/_404.php';
-            // }
+            else
+            {
+                $this->controller = '_404';
+                //require '../app/controllers/_404.php';
+            }
         }
 
         require '../app/controllers/' . $this->controller . '.php';

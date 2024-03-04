@@ -1,15 +1,18 @@
 <?php
 
-class About
+class About extends Controller
 {
 
     public function index()
     {
-        echo 'About/index';
+        $this->view('about');
     }
 
-    public function test()
+    public function history()
     {
-        echo 'OK!';
-    }
+    $this->view('history');
+    }   
+
 }
+
+

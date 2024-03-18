@@ -15,7 +15,7 @@ class Home extends Controller
         // $data = $user->update('1', $arr,); // , 'lastname' [table
 
         // for delete
-        // $data = $user->delete('6');
+        // $data = $user->delete('6');   
         $user = new User();
         $arr['firstname'] = 'Mark Gil';
         $arr['lastname'] = 'Arnaiz';

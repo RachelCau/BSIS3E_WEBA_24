@@ -16,7 +16,7 @@ class Home extends Controller
 
         // insert
         // $data = $user->update($arr);
-
+        $data = $user->findAll();
         show($data);
 
         $this->view('home');

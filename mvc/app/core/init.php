@@ -4,3 +4,10 @@
     require 'App.php';
     require 'Database.php';
     require 'Model.php';
+
+    spl_autoload_register(function ($class_name)
+        {
+            require '../app/models/' . $class_name . '.php';
+        });
+
+    // auto register sa class_namee

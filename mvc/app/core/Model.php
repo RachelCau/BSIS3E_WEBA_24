@@ -2,9 +2,17 @@
 
 class Model extends Database
 {
+    public function __construct()
+    {
+        if (!property_exists($this, 'table'))
+        {
+            $this->table = strtolower($this::class) . 's';
+        }
+    }
+
     public function findAll()
     {
-        $query = "select * from users"; //dynamic
+        $query = "select * from $this->table"; //dynamic
 
         $result = $this->query($query);
 
@@ -20,7 +28,7 @@ class Model extends Database
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
 
-        $query ="select * from users where ";
+        $query ="select * from $this->table where ";
 
         foreach ($keys as $key)
         {
@@ -45,6 +53,48 @@ class Model extends Database
         }
         return false;
     }
+
+    public function insert($data)
+    {
+        //insert into  users (firstname) values (:firstname) [in PDO use colon while c# @]
+        $columns = implode(',', array_keys($data));
+        $values = implode(',', array_keys($data));
+        $query = "insert into $this->table ($columns) values (:$values)";
+        show($query);
+        $this->query($query, $data);
+
+        return false;
+    }
+
+    public function update($id, $data, $column = 'id')
+    {
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key)
+        {
+            $query .= $key . " = :" . $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $column = :$column";
+
+        $data[$column] = $id;
+        $this->query($query, $data);
+
+        return false;
+    }
+
+    public function delete($id, $column = 'id')
+    {
+        $data[$column] = $id;
+        $query = " delete from $this->table where $column = :$column";
+
+        $this->query($query, $data);
+
+        return false;
+    }
 }
 
 // public function where($data, $data_not = [])
@@ -61,3 +111,4 @@ class Model extends Database
 //         //show($query);
 //     }
 // }
+

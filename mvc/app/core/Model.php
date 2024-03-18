@@ -58,7 +58,7 @@ class Model extends Database
     {
         //insert into  users (firstname) values (:firstname) [in PDO use colon while c# @]
         $columns = implode(',', array_keys($data));
-        $values = implode(',', array_keys($data));
+        $values = implode(', :', array_keys($data));
         $query = "insert into $this->table ($columns) values (:$values)";
         show($query);
         $this->query($query, $data);

@@ -5,10 +5,10 @@ class Home extends Controller
     public function index()
     {
         $model = new Model();
-        $arr[' firstname'] = 'John';
-        $arr['lastname'] = 'Doe';
-        $arr['email'] = 'jd@gmail.com';
-        $arr['password'] = '1234';
+        $arr[' firstname'] = 'Pat';
+        $arr['lastname'] = 'Chui';
+        $arr['email'] = 'patchui@gmail.com';
+        $arr['password'] = '089524';
         $data = $user->update($arr);
         show($data);
         

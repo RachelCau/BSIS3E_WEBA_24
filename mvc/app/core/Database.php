@@ -1,6 +1,6 @@
 <?php
 
-class Database 
+class Database
 {
     public function connect()
     {
@@ -30,5 +30,11 @@ class Database
             }
         }
         return false;
+    }
+
+    public function where($data)
+    {
+        $keys = array_keys($data);
+        $query = "select *from users where ";
     }
 }

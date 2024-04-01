@@ -3,11 +3,7 @@
 class controller {
     public function view($name)
     {
-        if (!empty($data))
-        {
-            extract($data);
-        }
-        if (file_exists('../app/views/' . $name . '.php')) {
+        if (file_exists('../app/views/'. $name . '.php')) {
 
 
             require'../app/views/'. $name . '.php';

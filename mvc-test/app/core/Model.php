@@ -12,7 +12,7 @@ class Model extends Database
      
     public function findAll()
     {
-        $query = "select * from $this->table where ";
+        $query = "select * from $this->table";
 
         $result = $this->query($query);
 
@@ -32,7 +32,7 @@ class Model extends Database
         $query = " select * from $this->table where ";
         
         foreach($keys as $key) {
-            $query .= $key . " != :" . $key . " && ";
+            $query .= $key . " = :" . $key . " && ";
         }
 
         foreach($keys_not as $key) {
@@ -50,10 +50,10 @@ class Model extends Database
         }
         public function insert($data)
         {
-            $columns = implode(',', array_keys($data));
-            $values = implode(',', array_keys($data));
-            $query = "insert into $this->table ($columns) values (:values)";
-            show(query);
+            $columns = implode(', ', array_keys($data));
+            $values = implode(', :', array_keys($data));
+            $query = "insert into $this->table ($columns) values (:$values)";
+            // show(query);
             $this->query($query, $data);
 
             return false;
@@ -61,21 +61,32 @@ class Model extends Database
 public function update($id, $data, $column = 'id')
 {
     $keys = array_keys($data);
-    $query =  "update $this->table set ";
+    $query = "update $this->table set ";
 
-    foreach ($keys as key){
+    foreach ($keys as $key){
         $query .= $key . " = :" . $key . ", ";
     }
 
-    $query = trim($query, ",");
+    $query = trim($query, ", ");
 
-    $query = " where $column = :$column";
+    $query .= " where $column = :$column";
 
     $data[$column] = $id;
-    $query = "delete from $this->table where $column = :$column";
+    // $query = "delete from $this->table where $column = :$column";
 
     $this->query($query, $data);
 
     return false;
 
+    }
+
+    public function delete($id, $column = 'id')
+    {
+        $data[$column] = $id;
+        $query = "delete from $this->table where $column = :$column";
+
+        $this->query($query, $data);
+
+    return false;
+    }
 }

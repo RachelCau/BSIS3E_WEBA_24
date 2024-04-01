@@ -1,6 +1,6 @@
 <?php
 
-define('ROOT', 'http://http://localhost/BSIS3E_WEBA_24/mvc/public');
+define('ROOT', 'http://localhost/BSIS3E_WEBA_24/mvc-test/public');
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'mvc_bsis3e');

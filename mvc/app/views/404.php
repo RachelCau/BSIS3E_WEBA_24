@@ -6,10 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
     <h1>Page not found!</h1>
-=======
-    <h1>Page not Found!</h1>
->>>>>>> Olalia
 </body>
 </html>

@@ -78,6 +78,7 @@ class Model extends Database
         $this->query($query, $data);
 
         return false;
+        
     }
 
     public function delete($id, $column = 'id')

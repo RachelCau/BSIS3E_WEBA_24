@@ -47,7 +47,6 @@ class Model extends Database
          }
          return false;
         }
-
         public function insert($data)
         {
             $columns = implode(', ', array_keys($data));

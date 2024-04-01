@@ -2,27 +2,45 @@
 
 class Model extends Database
 {
+<<<<<<< HEAD
     public function __construct()
     {
         if (!property_exists($this, 'table'))
         {
             $this->table = strtolower($this::class) . 's';
+=======
+
+    public function __construct()
+    {
+        if (!property_exists($this, 'table')) {        
+
+            $this->table = strtolower($this::class) . 's'; // users // connects to Controllers Home.php
+>>>>>>> Olalia
         }
     }
 
     public function findAll()
     {
+<<<<<<< HEAD
         $query = "select * from $this->table"; //dynamic
 
         $result = $this->query($query);
 
         if ($result)
         {
+=======
+        $query = "select * from $this->table";
+
+        $result = $this->query($query);
+
+        if ($result) {
+>>>>>>> Olalia
             return $result;
         }
         return false;
     }
 
+<<<<<<< HEAD
     public function where($data, $data_not = [])
     {
         $keys = array_keys($data);
@@ -37,10 +55,27 @@ class Model extends Database
         
         foreach ($keys_not as $key)
         {
+=======
+
+    public function where($data, $data_not = [])
+    {
+
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+
+        $query = "select * from $this->table where ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :" . $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+>>>>>>> Olalia
             $query .= $key . " != :" . $key . " && ";
         }
 
         $query = trim($query, " && ");
+<<<<<<< HEAD
         show($query);
         //$query = "select * from users";
 
@@ -49,6 +84,12 @@ class Model extends Database
 
         if ($result)
         {
+=======
+        $data = array_merge($data, $data_not);
+        $result = $this->query($query, $data);
+
+        if ($result) {
+>>>>>>> Olalia
             return $result;
         }
         return false;
@@ -56,8 +97,12 @@ class Model extends Database
 
     public function insert($data)
     {
+<<<<<<< HEAD
         //insert into  users (firstname) values (:firstname) [in PDO use colon while c# @]
         $columns = implode(',', array_keys($data));
+=======
+        $columns = implode(', ', array_keys($data));
+>>>>>>> Olalia
         $values = implode(', :', array_keys($data));
         $query = "insert into $this->table ($columns) values (:$values)";
         show($query);
@@ -71,8 +116,12 @@ class Model extends Database
         $keys = array_keys($data);
         $query = "update $this->table set ";
 
+<<<<<<< HEAD
         foreach ($keys as $key)
         {
+=======
+        foreach ($keys as $key) {
+>>>>>>> Olalia
             $query .= $key . " = :" . $key . ", ";
         }
 
@@ -89,13 +138,18 @@ class Model extends Database
     public function delete($id, $column = 'id')
     {
         $data[$column] = $id;
+<<<<<<< HEAD
         $query = " delete from $this->table where $column = :$column";
+=======
+        $query = "delete from $this->table where $column = :$column";
+>>>>>>> Olalia
 
         $this->query($query, $data);
 
         return false;
     }
 }
+<<<<<<< HEAD
 
 // public function where($data, $data_not = [])
 //     {
@@ -112,3 +166,5 @@ class Model extends Database
 //     }
 // }
 
+=======
+>>>>>>> Olalia

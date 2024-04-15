@@ -22,7 +22,7 @@
           <input name="password" value="<?= $user->password ?>" type="password" class="form-control">
       </div>
 
-      <button name="update" type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" class="btn btn-primary">Update</button>
   </form>
 
 </div>

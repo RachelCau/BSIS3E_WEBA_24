@@ -3,7 +3,7 @@
 <div class="container">
 
 
-    <form action="" method="POST" autocomplete="off" class="w-50 mx-auto">
+    <!-- <form action="" method="POST" autocomplete="off" class="w-50 mx-auto">
 
         <h3 class="mt-5 mb-4">User Registration</h3>
 
@@ -30,7 +30,9 @@
         <div class="mb-2">
             <button class="btn btn-primary" name="registerbtn" type="submit">Submit</button>
         </div>
-    </form>
+    </form> -->
+
+    
 
 </div>
 

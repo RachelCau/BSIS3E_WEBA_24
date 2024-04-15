@@ -23,19 +23,21 @@ class Database
 
         $check = $stm->execute($data);
 
-        if($check) {
+        if($check) 
+        {
             $result = $stm->fetchAll(PDO::FETCH_OBJ);
 
-        if(is_array($result) && count($result) > 0) {
-            return $result;
+            if(is_array($result) && count($result) > 0) 
+            {
+                return $result;
             }
         }
         return false;
     }
 
-    public function where($data)
-    {
-        $keys = array_keys($data);
-        $query = "select *from users where ";
-    }
+    // public function where($data)
+    // {
+    //     $keys = array_keys($data);
+    //     $query = "select *from users where ";
+    // }
 }

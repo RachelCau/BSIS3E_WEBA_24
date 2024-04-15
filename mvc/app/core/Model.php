@@ -28,7 +28,8 @@ class Model extends Database
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
 
-        $query ="select * from users where ";
+        // $query ="select * from users where ";
+        $query = "select * from $this->table where ";
 
         foreach ($keys as $key)
         {
@@ -41,7 +42,7 @@ class Model extends Database
         }
 
         $query = trim($query, " && ");
-        show($query);
+        // show($query);
         //$query = "select * from users";
 
         $data = array_merge($data, $data_not);

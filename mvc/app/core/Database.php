@@ -36,9 +36,9 @@ class Database
         return false;
     }
 
-    public function where($data)
-    {
-        $keys = array_keys($data);
-        $query = "select *from users where ";
-    }
+    // public function where($data)
+    // {
+    //     $keys = array_keys($data);
+    //     $query = "select *from users where ";
+    // }
 }

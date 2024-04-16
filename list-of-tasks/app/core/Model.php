@@ -7,7 +7,7 @@ class Model extends Database
     {
         if (!property_exists($this, 'table')) {        
 
-            $this->table = strtolower($this::class) . 's'; // users // connects to Controllers Home.php
+            $this->table = strtolower($this::class) . 's'; // 
         }
     }
 

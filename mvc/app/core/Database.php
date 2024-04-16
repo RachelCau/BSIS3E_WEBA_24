@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 class Database
 {
     public function connect()
@@ -11,16 +10,6 @@ class Database
 
         return $con;
 
-=======
-    class Database
-    {
-    public function connect()
-    {
-        $string = "mysql:host=localhost;dbname=mvc_bsis3e";
-        $con = new PDO($string,'root','');
-
-        return $con;
->>>>>>> Julianna
     }
 
     public function query($query, $data = [])

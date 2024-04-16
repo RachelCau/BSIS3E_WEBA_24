@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 require 'config.php';
-=======
->>>>>>> Julianna
 require 'functions.php';
 require 'Database.php';
 require 'Controller.php';

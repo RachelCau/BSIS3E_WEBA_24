@@ -2,19 +2,12 @@
 
 class Model extends Database
 {
-<<<<<<< HEAD
 
     public function __construct()
     {
         if (!property_exists($this, 'table')) {        
 
             $this->table = strtolower($this::class) . 's'; // users // connects to Controllers Home.php
-=======
-    public function __construct()
-    {
-        if (!property_exists($this, 'table')){
-            $this->table = strtolower($this::class) . 's'; //users
->>>>>>> Julianna
         }
     }
 

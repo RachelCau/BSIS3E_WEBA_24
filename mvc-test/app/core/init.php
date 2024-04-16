@@ -1,3 +1,4 @@
+
 <?php
 
 require 'config.php';
@@ -7,8 +8,7 @@ require 'Controller.php';
 require 'Model.php';
 require 'App.php';
 
-//automatic register ng classname 
 spl_autoload_register(function ($class_name) {
 
-    require '../app/models/' .$class_name . '.php';
+  require '../app/models/' . $class_name . '.php';
 });

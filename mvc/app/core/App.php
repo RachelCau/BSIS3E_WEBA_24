@@ -40,7 +40,6 @@ class App
                 unset($url[1]);
             }
         }
-<<<<<<< HEAD
 
         $this->params = $url ? array_values($url) : [];   
         call_user_func_array([$this->controller, $this->method], $this->params);
@@ -56,19 +55,3 @@ class App
         }
     }
 }
-=======
-        $this->params = $url ? array_values($url) : [];
-        call_user_func_array([$this->controller, $this->method], $this->params);
-    }
-
-    private function splitURL()
-    {
-        if (isset($_GET['url']))
-        {
-            $url = (explode("/", trim($_GET['url'], "/")));
-            return $url;
-
-        }  
-    }
-}
->>>>>>> Julianna

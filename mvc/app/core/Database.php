@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Database
 {
     public function connect()
@@ -10,10 +11,21 @@ class Database
 
         return $con;
 
+=======
+    class Database
+    {
+    public function connect()
+    {
+        $string = "mysql:host=localhost;dbname=mvc_bsis3e";
+        $con = new PDO($string,'root','');
+
+        return $con;
+>>>>>>> Julianna
     }
 
     public function query($query, $data = [])
     {
+<<<<<<< HEAD
 
         $con = $this->connect();
         //stm = statement
@@ -28,6 +40,18 @@ class Database
 
         if(is_array($result) && count($result) > 0) {
             return $result;
+=======
+        $con = $this->connect();
+        $stm = $con->prepare($query); // select * from (table) 
+
+        $check = $stm->execute($data);
+
+        if ($check){
+            $result = $stm->fetchAll(PDO::FETCH_OBJ);
+        
+            if(is_array($result) && count($result) > 0){
+                return $result;
+>>>>>>> Julianna
             }
         }
         return false;
@@ -36,6 +60,10 @@ class Database
     public function where($data)
     {
         $keys = array_keys($data);
+<<<<<<< HEAD
         $query = "select *from users where ";
+=======
+       $query = "select * from users where "; 
+>>>>>>> Julianna
     }
 }

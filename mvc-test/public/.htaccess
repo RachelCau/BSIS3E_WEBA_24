@@ -1,6 +1,10 @@
 RewriteEngine On
 
+<<<<<<< HEAD
 RewriteCond %{REQUEST_FILENAME} !-f
+=======
+RewriteCond %{REQUEST_FILENAME} !-f 
+>>>>>>> Julianna
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]

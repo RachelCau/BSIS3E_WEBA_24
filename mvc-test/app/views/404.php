@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         /*======================
     404 page
@@ -78,6 +78,16 @@
         </div>
     </section>
 
+</body>
+
+
+</head>
+<body>
+<?php include "partials/header.php" ?>
+    <h1>Page not Found!</h1>
+
+    <h1>Page Not Found!</h1>
+    <?php include "partials/footer.php" ?>
 </body>
 
 </html>

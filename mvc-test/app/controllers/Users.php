@@ -4,6 +4,10 @@ class Users extends Controller
 {
   public function index()
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new User();
     $rows = $x->findAll();
 
@@ -14,23 +18,38 @@ class Users extends Controller
 
   public function create()
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
 
-    $x = new User();
+    $errors = [];
+    $user = new User();
 
     if (count($_POST) > 0) {
 
-      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      if ($user->validate($_POST)) {
 
-      $x->insert($_POST);
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-      redirect('users');
+        $user->insert($_POST);
+
+        redirect('users');
+      } else {
+        $errors = $user->errors;
+      }
     }
 
-    $this->view('users/create');
+    $this->view('users/create', [
+      'errors' => $errors
+    ]);
   }
 
   public function edit($id)
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new User();
     $arr['id'] = $id;
     $row = $x->first($arr);
@@ -49,6 +68,10 @@ class Users extends Controller
 
   public function delete($id)
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new User();
     $arr['id'] = $id;
     $row = $x->first($arr);

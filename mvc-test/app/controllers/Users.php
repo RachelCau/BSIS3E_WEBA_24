@@ -4,6 +4,10 @@ class Users extends Controller
 {
   public function index()
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new User();
     $rows = $x->findAll();
 
@@ -11,41 +15,46 @@ class Users extends Controller
       'users' => $rows
     ]);
   }
-// ------------------------------------------------------------------------
-  public function create(){
 
-    $x = new User();
-
-    if(count($_POST) > 0) {
-    
-      // $arr['firstname'] = $_POST['firstname'];
-      // $arr['lastname'] = $_POST['lastname'];
-      // $arr['email'] = $_POST['email'];
-      // $arr['password'] = $_POST['password'];
-      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      
-      $x->insert($_POST);
-
-      redirect('users');
+  public function create()
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
     }
-    
-    $this->view('users/create');
+
+    $errors = [];
+    $user = new User();
+
+    if (count($_POST) > 0) {
+
+      if ($user->validate($_POST)) {
+
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        $user->insert($_POST);
+
+        redirect('users');
+      } else {
+        $errors = $user->errors;
+      }
+    }
+
+    $this->view('users/create', [
+      'errors' => $errors
+    ]);
   }
-// ------------------------------------------------------------------------
-  public function edit($id) {
+
+  public function edit($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
 
     $x = new User();
-
     $arr['id'] = $id;
-
     $row = $x->first($arr);
 
-    if(count($_POST) > 0) {
-
-      // $arr['firstname'] = $_POST['firstname'];
-      // $arr['lastname'] = $_POST['lastname'];
-      // $arr['email'] = $_POST['email'];
-      // $arr['password'] = $_POST['password'];
+    if (count($_POST) > 0) {
 
       $x->update($id, $_POST);
 
@@ -59,6 +68,10 @@ class Users extends Controller
 
   public function delete($id)
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new User();
     $arr['id'] = $id;
     $row = $x->first($arr);
@@ -66,7 +79,7 @@ class Users extends Controller
     if (count($_POST) > 0) {
 
       $x->delete($id);
-      
+
       redirect('users');
     }
 

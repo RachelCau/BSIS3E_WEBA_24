@@ -1,5 +1,7 @@
 <?php
-//Note: Php doesn't need a lot of closing  //
+
+session_start();
+
 require '../app/core/init.php';
 
 $app = new App();

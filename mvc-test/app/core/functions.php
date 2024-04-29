@@ -7,6 +7,14 @@ function show($stuff)
   echo '</pre>';
 }
 
-function redirect($path) {
-  header("Location: " . ROOT . "/" . $path );
+function redirect($path)
+{
+  header("Location: " . ROOT . "/" . $path);
+}
+
+function get_var($key)
+{
+  if (isset($_POST[$key])) {
+    return $_POST[$key];
+  }
 }

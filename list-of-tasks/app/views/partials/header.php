@@ -22,14 +22,28 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
           </li>
+
+          <?php if (!empty($_SESSION['USER'])): ?>
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/tasks">Tasks</a>
           </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
+            </li>
+            
+          <?php endif; ?>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <?php if (empty($_SESSION['USER'])): ?>
+
+          <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
+
+        <?php else: ?>
+
+          <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>
+
+        <?php endif; ?>
       </div>
     </div>
   </nav>

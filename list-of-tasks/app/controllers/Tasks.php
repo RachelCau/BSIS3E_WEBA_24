@@ -4,6 +4,10 @@ class Tasks extends Controller
 {
     public function index()
     {
+      if (!Auth::logged_in()) {
+        redirect('login');
+      }
+
         $x = new Task();
         $rows = $x->findAll();
 
@@ -14,6 +18,10 @@ class Tasks extends Controller
 
     public function create()
     {
+      if (!Auth::logged_in()) {
+        redirect('login');
+      }
+
         $x = new Task();
 
         if (count($_POST) > 0) {
@@ -28,6 +36,10 @@ class Tasks extends Controller
 
     public function edit($id)
     {
+      if (!Auth::logged_in()) {
+        redirect('login');
+      }
+
         $x = new Task();
         $arr['id'] = $id;
         $row = $x->first($arr);
@@ -46,6 +58,10 @@ class Tasks extends Controller
 
     public function delete($id)
   {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
     $x = new Task();
     $arr['id'] = $id;
     $row = $x->first($arr);

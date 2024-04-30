@@ -27,7 +27,7 @@
         </div>
         <div class="mb-2">
             <label for="">Email</label>
-            <input name="text" value="<?= get_var('email') ?>" type="text" class="form-control">
+            <input name="email" value="<?= get_var('email') ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
             <label for="">Password</label>

@@ -6,6 +6,21 @@
         <h2>Edit User</h2>
 
         <div class="mb-2">
+            <label for="">Image</label>
+            <input type="file" name="images" class="form-control">
+        </div>
+
+
+        <div class="mb-2">
+                 <label for="">Role</label>
+                    <select name="" class="form-control">
+                       <option value="">Choose a Role</option>
+                       <option <?= $user->role == 'Admin' ? 'selected' : '' ?> value="Admin">Admin</option>
+                        <option <?= $user->role == 'User' ? 'selected' : '' ?> value="User">User</option>
+                    </select>
+        </div>
+
+        <div class="mb-2">
             <label for="">First Name</label>
             <input name="firstname" value="<?= $user->firstname ?>" type="text" class="form-control">
         </div>

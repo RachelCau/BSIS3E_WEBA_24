@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <form action="" method="POST" class="mt-5 w-50 mx-auto">
+    <form action="" method="POST" enctype="multipart/form-data" class="mt-5 w-50 mx-auto">
         <h2>Create User</h2>
 
         <?php if (!empty($errors)): ?>
@@ -17,6 +17,21 @@
 
         <?php endif; ?>
 
+        <input type="hidden" name="token">
+
+        <div class="mb-2">
+            <label for="">Image</label>
+            <input type="file" name="images" class="form-control">
+        </div>
+
+        <div class="mb-2">
+            <label for="">Role</label>
+            <select name="role" class="form-control">
+                <option value="">Choose a Role</option>
+                <option <?= get_select('role', 'Admin') ?> value="Admin">Admin</option>
+                <option <?= get_select('role', 'User') ?> value="User">User</option>
+            </select>
+        </div>
         <div class="mb-2">
             <label for="">First Name</label>
             <input name="firstname" value="<?= get_var('firstname') ?>" type="text" class="form-control">

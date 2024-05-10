@@ -18,6 +18,7 @@ class Users extends Controller
 
   public function create()
   {
+
     if (!Auth::logged_in()) {
       redirect('login');
     }
@@ -29,7 +30,28 @@ class Users extends Controller
 
       if ($user->validate($_POST)) {
 
+        if (count($_FILES) > 0) {
+
+          $allowed[] = 'image/png';
+          $allowed[] = 'image/jpeg';
+
+          if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
+
+            $folder = 'assets/images/';
+
+            if (!file_exists($folder)) {
+              mkdir($folder, 0777, true);
+            }
+
+            $destination = $folder . $_FILES['image']['name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+            $_POST['image'] = $destination;
+          }
+        }
+
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $_POST['token'] = random_string(60);
 
         $user->insert($_POST);
 
@@ -78,7 +100,13 @@ class Users extends Controller
 
     if (count($_POST) > 0) {
 
-      $x->delete($id);
+      $destination = $row->image;
+
+      if (unlink($destination)) {
+        $x->delete($id);
+      } else {
+        $x->delete($id);
+      }
 
       redirect('users');
     }

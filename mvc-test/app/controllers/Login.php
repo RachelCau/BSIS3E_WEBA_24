@@ -15,7 +15,9 @@ class Login extends Controller
 
       if ($row) {
 
-        if (password_verify($_POST['password'], $row->password)) {
+        if (password_verify($_POST['password'], $row->password)) 
+        // if ($_POST['password'] == "12345")
+        {
 
           Auth::authenticate($row);
           redirect('home');
